@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">LIBRIPOLIS</h1>
+ 
+    <div class="container text-center mt-5">
+       
+        <h1>Find a book and borrow it !</h1>
+        <div class="row mt-3">
+            <div class="col--md-4">
+             
+            
+            </div>
+            <div class="col-md-4">
+                <a class="btn btn-primary btn-lg" asp-area="" asp-controller="BookTypes" asp-action="Index">Book Type</a>
+            </div>
+            <div class="col-md-4">
+                <a class="btn btn-primary btn-lg" asp-area="" asp-controller="Books" asp-action="Index">Books</a>
+            </div>
+            <div class="col-md-4">
+                <a class="btn btn-primary btn-lg" asp-area="" asp-controller="Borrows" asp-action="Index">Borrows</a>
+            </div> 
+        </div>
+    </div>
+</div>

@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Libripolis.Models.BookType>
+
+@{
+    ViewData["Title"] = "Book Types";
+}
+
+@section Styles {
+    <style>
+        /* Tabela na ciemnym tle */
+        #bookTypesTable {
+            background-color: #333; /* ciemne tło */
+            color: white; /* biały tekst */
+        }
+
+            /* Nagłówki tabeli */
+            #bookTypesTable thead {
+                background-color: #222; /* jeszcze ciemniejszy nagłówek */
+                color: white;
+            }
+
+            /* Wiersze w tabeli */
+            #bookTypesTable tbody td {
+                background-color: #333;
+                color: white;
+            }
+
+        /* Styl dla Select (Show xx entries) */
+        #bookTypesTable_length select {
+            background-color: #495057; /* ciemniejsze tło */
+            color: white; /* biały tekst */
+            border: 1px solid #ccc; /* jasna obramówka */
+            padding: 5px;
+            border-radius: 5px;
+            width: 120px; /* szerokość pola */
+        }
+
+        /* Styl dla pola wyszukiwania */
+        #bookTypesTable_filter input {
+            background-color: #495057; /* ciemniejsze tło */
+            color: white; /* biały tekst */
+            border: 1px solid #ccc; /* jasna obramówka */
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        /* Dodanie dodatkowego marginesu do przycisków */
+        .dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter {
+            margin-top: 10px;
+        }
+    </style>
+}
+
+<div class="container text-center mt-5">
+    <h1>Book Types</h1>
+
+    <p>
+        <a class="btn btn-primary" asp-action="Create">Create New</a>
+    </p>
+
+    <table id="bookTypesTable" class="table mt-3 display">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Name)</th>
+                <th>@Html.DisplayNameFor(model => model.user)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.user.Email)</td>
+                    <td>
+                        <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Inicjalizacja DataTables -->
+<script>
+    $(document).ready(function () {
+        $('#bookTypesTable').DataTable({
+            "paging": true,   // Włącza paginację
+            "searching": true, // Włącza wyszukiwanie
+            "ordering": true,  // Włącza sortowanie
+            "info": true,      // Wyświetla informacje o liczbie rekordów
+            "lengthMenu": [10, 25, 50, 100], // Ustawienie liczby rekordów na stronę
+        });
+    });
+</script>

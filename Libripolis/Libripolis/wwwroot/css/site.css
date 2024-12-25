@@ -1,0 +1,106 @@
+
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    background-image: url('background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+.container {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    font-family: 'Arial', sans-serif; 
+    color: #ffffff; 
+
+   
+    .container p,
+    .container h1,
+    .container table
+   {
+        color: #ffffff !important;
+    }
+
+
+.display-4 {
+    color: #ffffff;
+}
+
+
+.btn-primary {
+    background-color: #007bff; 
+    border-color: #007bff; 
+    color: #ffffff; 
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3; 
+        border-color: #0056b3; 
+    }
+
+
+.footer {
+    border-top: 1px solid #ddd; 
+    background-color: #f8f9fa; 
+    position: absolute;
+}
+
+
+#search-form {
+    max-width: calc(33.33% - 20px);
+    margin-right: 20px;
+    text-align: center;
+    color: #ffffff;
+}
+
+
+a {
+    color: #17a2b8; 
+}
+
+    a:hover {
+        color: #138496; 
+    }
+
+.label-black {
+    color: black;
+}
+
+
+.label-dark {
+    color: #343a40; 
+}
+
+
+.edit-form input[type="text"]:focus,
+.edit-form select:focus {
+    color: #000000; 
+}
+
+
+.edit-form label,
+.edit-form span {
+    color: #000000; 
+}
+
+.edit-form input[type="text"],
+.edit-form select {
+    background-color: rgba(255, 255, 255, 0.7);
+    color: #000000; 
+    border: 1px solid #ccc; 
+    padding: 5px; 
+    border-radius: 5px;
+}
+#search-form {
+    max-width: calc(33.33% - 20px);
+    margin-right: 20px;
+    text-align: center;
+    color: #000;
+}

@@ -1,0 +1,29 @@
+﻿@model string
+@{
+    ViewData["Title"] = "Enter OTP";
+}
+
+<h2>Enter OTP</h2>
+
+@if (ViewBag.Otp != null)
+{
+    <p>Your OTP Code: <strong>@ViewBag.Otp</strong> (expires @ViewBag.OtpExpiry)</p>
+}
+
+<form asp-action="VerifyOtp" method="post">
+    <div class="form-group">
+        <label for="inputOtp">Enter OTP:</label>
+        <input type="text" class="form-control" id="inputOtp" name="inputOtp" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Verify</button>
+</form>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="text-danger">
+        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <p>@error.ErrorMessage</p>
+        }
+    </div>
+}

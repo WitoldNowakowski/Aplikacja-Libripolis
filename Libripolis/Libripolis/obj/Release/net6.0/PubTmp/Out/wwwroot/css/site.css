@@ -1,0 +1,108 @@
+/* Resetowanie domyœlnych stylów dla body i html */
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+/* Ustawienie background image dla ca³ej strony */
+body {
+    background-image: url('background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Styl dla kontenera z tekstem */
+.container {
+    background-color: rgba(0, 0, 0, 0.7); /* Kolor t³a z przeŸroczystoœci¹ */
+    padding: 20px; /* Wewnêtrzny odstêp kontenera */
+    border-radius: 10px; /* Zaokr¹glenie naro¿ników kontenera */
+    font-family: 'Arial', sans-serif; /* Dostosuj czcionkê do w³asnych preferencji */
+    color: #ffffff; /* Kolor tekstu na tle obrazu */
+}
+
+    /* Dodatkowy kontrast dla tekstu w kontenerze */
+    .container p,
+    .container h1,
+    .container table
+   {
+        color: #ffffff !important; /* Dodatkowy kontrast */
+    }
+
+/* Styl dla nag³ówka LIBRIPOLIS */
+.display-4 {
+    color: #ffffff; /* Kolor nag³ówka */
+}
+
+/* Styl dla przycisków */
+.btn-primary {
+    background-color: #007bff; /* Kolor t³a przycisku */
+    border-color: #007bff; /* Kolor obramowania przycisku */
+    color: #ffffff; /* Kolor tekstu przycisku */
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3; /* Kolor t³a przycisku po najechaniu kursorem */
+        border-color: #0056b3; /* Kolor obramowania przycisku po najechaniu kursorem */
+    }
+
+/* Dostosowanie koloru tekstu dla stopki */
+.footer {
+    border-top: 1px solid #ddd; /* Dodatkowy styl dla górnej krawêdzi stopki */
+    background-color: #f8f9fa; /* Kolor t³a stopki */
+    position: absolute;
+}
+
+/* Dostosowanie koloru tekstu dla formularza wyszukiwania */
+#search-form {
+    max-width: calc(33.33% - 20px); /* Maksymalna szerokoœæ - 20px na ewentualny padding */
+    margin-right: 20px; /* Odstêp z prawej strony */
+    text-align: center;
+    color: #ffffff; /* Kolor tekstu */
+}
+
+/* Kolor tekstu dla linków */
+a {
+    color: #17a2b8; /* Dostosuj kolor linków do swoich preferencji */
+}
+
+    a:hover {
+        color: #138496; /* Kolor linków po najechaniu kursorem */
+    }
+
+.label-black {
+    color: black;
+}
+
+/* Dodatkowy styl dla etykiet o klasie 'label-dark' */
+.label-dark {
+    color: #343a40; /* Kolor tekstu dla ciemnego t³a */
+}
+
+/* Dodatkowy styl dla formularza edycji o klasie 'edit-form' */
+.edit-form input[type="text"]:focus,
+.edit-form select:focus {
+    color: #000000; /* Kolor tekstu dla zaznaczonego pola */
+}
+
+/* Dodatkowy styl dla tekstu w formularzach */
+.edit-form label,
+.edit-form span {
+    color: #000000; /* Kolor tekstu w formularzach */
+}
+
+/* Dodatkowy styl dla formularza, aby tekst by³ bardziej widoczny */
+.edit-form input[type="text"],
+.edit-form select {
+    background-color: rgba(255, 255, 255, 0.7); /* T³o z przeŸroczystoœci¹ */
+    color: #000000; /* Kolor tekstu */
+    border: 1px solid #ccc; /* Obramowanie */
+    padding: 5px; /* Wewnêtrzny odstêp */
+    border-radius: 5px; /* Zaokr¹glenie naro¿ników */
+}
+#search-form {
+    max-width: calc(33.33% - 20px);
+    margin-right: 20px;
+    text-align: center;
+    color: #000; /* Zmiana koloru tekstu na czarny */
+}

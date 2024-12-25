@@ -1,0 +1,109 @@
+﻿@model IEnumerable<Libripolis.Models.Book>
+
+@{
+    ViewData["Title"] = "Books";
+}
+
+@section Styles {
+    <style>
+        /* Tabela na ciemnym tle */
+        #booksTable {
+            background-color: #333; /* ciemne tło */
+            color: white; /* biały tekst */
+        }
+
+            /* Nagłówki tabeli */
+            #booksTable thead {
+                background-color: #222; /* jeszcze ciemniejszy nagłówek */
+                color: white;
+            }
+
+            /* Wiersze w tabeli */
+            #booksTable tbody td {
+                background-color: #333;
+                color: white;
+            }
+
+        /* Styl dla Select (Show xx entries) */
+        #booksTable_length select {
+            background-color: #495057; /* ciemniejsze tło */
+            color: white; /* biały tekst */
+            border: 1px solid #ccc; /* jasna obramówka */
+            padding: 5px;
+            border-radius: 5px;
+            width: 120px; /* szerokość pola */
+        }
+
+        /* Styl dla pola wyszukiwania */
+        #booksTable_filter input {
+            background-color: #495057; /* ciemniejsze tło */
+            color: white; /* biały tekst */
+            border: 1px solid #ccc; /* jasna obramówka */
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        /* Dodanie dodatkowego marginesu do przycisków */
+        .dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter {
+            margin-top: 10px;
+        }
+    </style>
+}
+
+<div class="container text-center mt-5">
+    <h1>Books</h1>
+
+    <p>
+        <a class="btn btn-primary" asp-action="Create">Add a Book</a>
+    </p>
+
+    <table id="booksTable" class="table mt-3 display">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>@Html.DisplayNameFor(model => model.Title)</th>
+                <th>@Html.DisplayNameFor(model => model.Author)</th>
+                <th>Pages</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @if (!string.IsNullOrEmpty(item.ImageUrl))
+                        {
+                            <img src="@item.ImageUrl" alt="Book Image" width="85" height="115">
+                        }
+                        else
+                        {
+                            <span>No Image Available</span>
+                        }
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Author)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Pages)</td>
+                    <td>
+                        <a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                        <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Inicjalizacja DataTables -->
+<script>
+    $(document).ready(function () {
+        $('#booksTable').DataTable({
+            "paging": true,   // Włącza paginację
+            "searching": true, // Włącza wyszukiwanie
+            "ordering": true,  // Włącza sortowanie
+            "info": true,      // Wyświetla informacje o liczbie rekordów
+            "lengthMenu": [10, 25, 50, 100], // Ustawienie liczby rekordów na stronę
+        });
+    });
+</script>

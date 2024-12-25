@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Libripolis.Models.BorrowReport>
+
+<h1>Borrow Reports</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Book</th>
+            <th>Borrow Date</th>
+            <th>Return Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var report in Model)
+        {
+            <tr>
+                <td>@report.UserName</td>
+                <td>@report.Book.Title</td>
+                <td>@report.BorrowDate.ToShortDateString() ?? "Not Available"</td>
+                <td>@report.ReturnDate?.ToShortDateString() ?? "Not Available"</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Przycisk do generowania PDF -->
+<a href="@Url.Action("GeneratePdf", "BorrowReports")" class="btn btn-primary">Generate PDF</a>

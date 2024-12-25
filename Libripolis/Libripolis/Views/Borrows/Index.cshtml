@@ -1,0 +1,97 @@
+﻿@model IEnumerable<Libripolis.Models.Borrow>
+
+@{
+    ViewData["Title"] = "Borrows";
+}
+
+@section Styles {
+    <style>
+        /* Tabela na ciemnym tle */
+        #borrowsTable {
+            background-color: #333; /* ciemne tło */
+            color: white; /* biały tekst */
+        }
+
+            /* Nagłówki tabeli */
+            #borrowsTable thead {
+                background-color: #222; /* jeszcze ciemniejszy nagłówek */
+                color: white;
+            }
+
+            /* Wiersze w tabeli */
+            #borrowsTable tbody td {
+                background-color: #333;
+                color: white;
+            }
+
+        /* Styl dla Select (Show xx entries) */
+        #borrowsTable_length select {
+            background-color: #495057; /* ciemniejsze tło */
+            color: white; /* biały tekst */
+            border: 1px solid #ccc; /* jasna obramówka */
+            padding: 5px;
+            border-radius: 5px;
+            width: 120px; /* szerokość pola */
+        }
+
+        /* Styl dla pola wyszukiwania */
+        #borrowsTable_filter input {
+            background-color: #495057; /* ciemniejsze tło */
+            color: white; /* biały tekst */
+            border: 1px solid #ccc; /* jasna obramówka */
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        /* Dodanie dodatkowego marginesu do przycisków */
+        .dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter {
+            margin-top: 10px;
+        }
+    </style>
+}
+
+<h1>My Borrows</h1>
+
+<div class="container">
+    <a asp-action="allBorows" asp-controller="Borrows" class="btn btn-primary">All Borrows</a>
+    <table id="borrowsTable" class="table mt-3 display">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Book.Title)</th>
+                <th>@Html.DisplayNameFor(model => model.user.Email)</th>
+                <th>@Html.DisplayNameFor(model => model.Start)</th>
+                <th>@Html.DisplayNameFor(model => model.End)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Book.Title)</td>
+                    <td>@Html.DisplayFor(modelItem => item.user.Email)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Start)</td>
+                    <td>@Html.DisplayFor(modelItem => item.End)</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Change date</a>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Inicjalizacja DataTables -->
+<script>
+    $(document).ready(function () {
+        $('#borrowsTable').DataTable({
+            "paging": true,   // Włącza paginację
+            "searching": true, // Włącza wyszukiwanie
+            "ordering": true,  // Włącza sortowanie
+            "info": true,      // Wyświetla informacje o liczbie rekordów
+            "lengthMenu": [10, 25, 50, 100], // Ustawienie liczby rekordów na stronę
+        });
+    });
+</script>

@@ -1,0 +1,71 @@
+﻿@model Libripolis.Models.Borrow
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Borrow</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group" hidden>
+                <label asp-for="BookId" class="control-label"></label>
+                <select asp-for="BookId" class ="form-control" asp-items="ViewBag.BookId"></select>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="userId" class="control-label"></label>
+                <select asp-for="userId" class ="form-control" asp-items="ViewBag.userId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Start" class="control-label"></label>
+                <input asp-for="Start" class="form-control" type="datetime-local" />
+                <span asp-validation-for="Start" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="End" class="control-label"></label>
+                <input asp-for="End" class="form-control" type="datetime-local" />
+                <span asp-validation-for="End" class="text-danger" style="color:black"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-secondary" asp-action="Index">Back to List</a>
+</div>
+@section Scripts {
+    <script>
+        // Formatuj datę od początku
+        document.addEventListener("DOMContentLoaded", function () {
+            var startDateInput = document.getElementById("Start");
+            var endDateInput = document.getElementById("End");
+            var currentDate = new Date();
+
+           
+            currentDate.setHours(currentDate.getHours() + 1);
+
+            // Format daty 
+            var formattedDate = currentDate.toISOString().slice(0, 16);
+
+            // Ustaw wartości start end
+            startDateInput.value = formattedDate;
+            endDateInput.value = formattedDate;
+
+            
+            var errorMessage = '@TempData["ErrorMessage"]';
+            if (errorMessage) {
+                alert(errorMessage);
+            }
+        });
+    </script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
